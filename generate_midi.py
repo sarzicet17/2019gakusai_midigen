@@ -15,23 +15,26 @@ def generateforChord(argue):
 
     return chord_progression
 
-container_id = 'testm'
 gen_command = 'improv_rnn_generate'
 gen_config = '--config=basic_improv'
 model_path = '--bundle_file=/magenta-models/chord_pitches_improv.mag'
-output_directory = '--output_dir=/magenta-data/chord_piteches_improv/generated '
+output_directory = '--output_dir=/magenta-data/'
+output_files_num = '--num_outputs=1'
 #prime_note = 60
 
 backing = 'backing_chords="'+generateforChord(args)+'"'
-#command = ['docker','run' ,'--rm','--mount','type=bind','src=$(pwd)','dst=/magenta-data','-it','-p','6006:6006','tensorflow/magenta']
 command=['improv_rnn_generate']
-ex_command = [gen_command,gen_config,model_path,output_directory, backing,'--render_chords','--primer_melody=[67]']
+ex_command = [gen_command,gen_config,model_path,output_directory, backing,output_files_num,'--render_chords','--primer_melody=[67]']
 command.extend(ex_command)
 print(command)
 res = subprocess.call(command)
-
 print(res)
-
+# change filename
+mv_com = ['mv','/magenta-data/2019*.mid','music.mid']
+mv_com_args = ['/magenta-data/2019*.mid','music.mid']
+#res2 = subprocess.call(mv_com,shell=True)
+#mv_com.extend(mv_com_args)
+subprocess.Popen('mv /magenta-data/2019*.mid /magenta-data/music.mid',shell=True).communicate()
 #print(shell_command)
 #res = subprocess.call(shell_command)
 #print("Message",res)
