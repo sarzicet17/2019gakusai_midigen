@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  magenta:
+    build:
+      context: .
+      dockerfile: Dockerfile-magenta
+    ports:
+      - 6006:6006
+    volumes:
+      - $PWD/output_midi:/magenta-data/
