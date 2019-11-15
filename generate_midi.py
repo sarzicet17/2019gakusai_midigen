@@ -6,12 +6,19 @@ import sys
 
 args = sys.argv
 
+
+if len(args) < 4:
+    print("arguments not enough")
+    quit()
+
+filename = args[4]
+
 def generateforChord(argue):
     chord_progression = "C G Am F C G Am F"
-    if argue[1] > argue[2]:
+    if argue[1] > argue[2] > argue[3]:
         chord_progression = "C G Am F C G Am F"
-    elif argue[1] < argue[2]:
-        chord_progression = "Am F G C"
+    elif argue[1] < argue[2] < argue[3]:
+        chord_progression = "C G F Fm C"
 
     return chord_progression
 
@@ -30,11 +37,11 @@ print(command)
 res = subprocess.call(command)
 print(res)
 # change filename
-mv_com = ['mv','/magenta-data/2019*.mid','music.mid']
-mv_com_args = ['/magenta-data/2019*.mid','music.mid']
+#mv_com = ['mv','/magenta-data/2019*.mid','music.mid']
+#mv_com_args = ['/magenta-data/2019*.mid','music.mid']
 #res2 = subprocess.call(mv_com,shell=True)
 #mv_com.extend(mv_com_args)
-subprocess.Popen('mv /magenta-data/2019*.mid /magenta-data/music.mid',shell=True).communicate()
+subprocess.Popen('mv /magenta-data/2019*.mid /magenta-data/'+filename,shell=True).communicate()
 #print(shell_command)
 #res = subprocess.call(shell_command)
 #print("Message",res)
