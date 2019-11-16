@@ -4,6 +4,7 @@ services:
   magenta:
     build:  ./magenta
     container_name: magenta
+    tty: true
     volumes:
       - $PWD/workdir:/magenta-data/
     ports:
@@ -12,5 +13,6 @@ services:
   timidity:
     build: ./timidity-ubuntu
     container_name: timidity
+    tty: true
     volumes:
       - $PWD/workdir:/wavfile
