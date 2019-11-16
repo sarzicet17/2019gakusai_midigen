@@ -2,10 +2,17 @@ version: "3"
 
 services:
   magenta:
-    build:
-      context: .
-      dockerfile: Dockerfile-magenta
+    build:  ./magenta
+    container_name: magenta
+    volumes:
+      - workdir:/magenta-data/
     ports:
       - 6006:6006
+      
+  timidity:
+    build: ./timidity-ubuntu
+    container_name: timidity
     volumes:
-      - $PWD/output_midi:/magenta-data/
+      - workdir:/wavfile
+volumes:
+  workdir:
