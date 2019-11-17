@@ -18,9 +18,9 @@ def generateforChord(argue):
     if argue[1] > argue[2] > argue[3]:
         chord_progression = "C G Am F C G Am F"
     elif argue[1] < argue[2] < argue[3]:
-        chord_progression = "Am F G C"
+        chord_progression = "C G Am Em F C F G"
     elif argue[2] > argue[3] > argue[1]:
-        chord_progression = "C F G"
+        chord_progression = "G Am F C"
 
     return chord_progression
 
@@ -33,7 +33,7 @@ output_files_num = '--num_outputs=1'
 
 backing = 'backing_chords="'+generateforChord(args)+'"'
 command=['improv_rnn_generate']
-ex_command = [gen_command,gen_config,model_path,output_directory, backing,output_files_num,'--render_chords','--primer_melody=[67]']
+ex_command = [gen_command,gen_config,model_path,output_directory, backing,output_files_num,'--render_chords','--primer_melody=[60]']
 command.extend(ex_command)
 print(command)
 res = subprocess.call(command)
