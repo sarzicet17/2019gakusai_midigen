@@ -1,1 +1,1 @@
-timidity -x 'source /etc/timidity/fluidr3_gm.cfg' -OwS $1 -o /wavfiles/$1.wav
+timidity -x 'source /etc/timidity/fluidr3_gm.cfg' -OwS /wavfile/$1 -o /wavfile/$1.wav
