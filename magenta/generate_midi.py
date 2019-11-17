@@ -18,7 +18,9 @@ def generateforChord(argue):
     if argue[1] > argue[2] > argue[3]:
         chord_progression = "C G Am F C G Am F"
     elif argue[1] < argue[2] < argue[3]:
-        chord_progression = "C G F Fm C"
+        chord_progression = "Am F G C"
+    elif argue[2] > argue[3] > argue[1]:
+        chord_progression = "C F G"
 
     return chord_progression
 
